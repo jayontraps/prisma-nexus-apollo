@@ -1,0 +1,77 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn build
+
+PATH: 
+  /Users/jasonrighelato/google-cloud-sdk/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  12.10.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "typescript-graphql",
+    "scripts": {
+      "start": "node dist/server",
+      "clean": "rm -rf dist",
+      "build": "npm -s run clean && npm -s run generate && tsc",
+      "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
+      "generate:prisma": "prisma generate",
+      "generate:nexus": "ts-node --transpile-only src/schema",
+      "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./src"
+    },
+    "dependencies": {
+      "@nexus/schema": "0.15.0",
+      "@types/bcrypt": "^3.0.0",
+      "@types/jsonwebtoken": "^8.5.0",
+      "@types/node-fetch": "2.5.7",
+      "apollo-server": "2.17.0",
+      "bcrypt": "^5.0.0",
+      "dotenv": "^8.2.0",
+      "graphql": "15.3.0",
+      "graphql-middleware": "^4.0.2",
+      "graphql-shield": "^7.3.5",
+      "jsonwebtoken": "^8.5.1",
+      "nexus-plugin-prisma": "0.17.0"
+    },
+    "devDependencies": {
+      "@types/node": "12.12.54",
+      "ts-node": "8.10.2",
+      "ts-node-dev": "1.0.0-pre.50",
+      "typescript": "3.9.6"
+    },
+    "prettier": {
+      "singleQuote": true,
+      "semi": false,
+      "trailingComma": "all"
+    },
+    "engines": {
+      "node": ">=10.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 2
+  Command: sh
+  Arguments: -c npm -s run clean && npm -s run generate && tsc
+  Directory: /Users/jasonrighelato/Development/test/prisma2/from-scratch/prisma-examples/typescript/graphql-apollo-server
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at ChildProcess.emit (events.js:209:13)
+      at maybeClose (internal/child_process.js:1021:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:283:5)
