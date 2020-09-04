@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 model User {
@@ -34,17 +34,7 @@ model TestType {
 }
 
 model Human {
-  id      Int      @default(autoincrement()) @id
-  name    String   @unique
-  age     Int?
-  wookies Wookie[]
-}
-
-model Wookie {
-  id      Int    @default(autoincrement()) @id
-  name    String
-  origin  String
-  color   String
-  owner   Human? @relation(fields: [ownerId], references: [id])
-  ownerId Int?
+  id   Int    @default(autoincrement()) @id
+  name String
+  age  Int?
 }

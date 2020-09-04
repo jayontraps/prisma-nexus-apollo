@@ -1,6 +1,7 @@
 import * as User from './User'
 import * as Post from './Post'
 import * as TestType from './TestType'
+import * as Human from './Human'
 
 // const info = queryField('info', {
 //   type: 'String',
@@ -12,6 +13,7 @@ export const Query = {
   ...User,
   ...Post,
   ...TestType,
+  ...Human,
 }
 
 // export const Query = queryType({

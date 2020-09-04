@@ -5,6 +5,8 @@ import { Post } from './Post'
 import { Query } from './Queries'
 import { User } from './User'
 import { TestType } from './TestType'
+import { Human } from './Human'
+import { Wookie } from './Wookie'
 
 export const resolvers = {
   User,
@@ -13,5 +15,7 @@ export const resolvers = {
   Query,
   Mutation,
   TestType,
+  Human,
+  Wookie,
   // Subscription,
 }

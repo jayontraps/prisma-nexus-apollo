@@ -9,8 +9,17 @@ type AuthPayload {
 
 scalar DateTime
 
+type Human {
+  age: Int
+  id: Int!
+  name: String!
+  wookies(cursor: WookieWhereUniqueInput, skip: Int, take: Int): [Wookie!]!
+}
+
 type Mutation {
   createDraft(authorEmail: String!, content: String, title: String!): Post!
+  createHuman(age: Int, name: String!): Human!
+  createWookie(color: String!, name: String!, origin: String!, ownerName: String!): Wookie!
   deleteOnePost(where: PostWhereUniqueInput!): Post
   login(email: String!, password: String!): AuthPayload!
   publish(id: Int): Post
@@ -45,9 +54,11 @@ input PostWhereUniqueInput {
 }
 
 type Query {
+  allHumans: [Human!]!
   allTestTypes: [TestType!]!
   feed: [Post!]!
   filterPosts(searchString: String): [Post!]!
+  findHuman(searchString: String): [Human!]!
   me: User!
   post(where: PostWhereUniqueInput!): Post
 }
@@ -72,4 +83,17 @@ input UserCreateInput {
   password: String!
   posts: PostCreateManyWithoutAuthorInput
   updatedAt: DateTime
+}
+
+type Wookie {
+  color: String!
+  id: Int!
+  name: String!
+  origin: String!
+  owner: Human
+  ownerId: Int
+}
+
+input WookieWhereUniqueInput {
+  id: Int
 }

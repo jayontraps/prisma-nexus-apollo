@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "Wookie",
+      "field": "owner",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Wookie",
+      "field": "ownerId",
+      "arity": "Optional"
+    }
+  ]
+}

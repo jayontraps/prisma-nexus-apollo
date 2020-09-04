@@ -9,9 +9,11 @@ export const permissions = shield({
     '*': allow,
   },
   Mutation: {
+    createWookie: rules.isAuthenticatedUser,
     createDraft: rules.isAuthenticatedUser,
     deleteOnePost: rules.isPostOwner,
     publish: rules.isPostOwner,
+    '*': allow,
   },
   // Subscription: {
   //   latestPost: rules.isAuthenticatedUser,

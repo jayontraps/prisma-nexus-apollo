@@ -56,6 +56,10 @@ export const login = mutationField('login', {
     if (!passwordValid) handleError(errors.invalidUser)
 
     const accessToken = generateAccessToken(user.id)
+    ctx.res.cookie('token', accessToken, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 24 * 365,
+    })
     return {
       accessToken,
       user,

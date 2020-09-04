@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Human",
+      "field": "wookies",
+      "type": "Wookie",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Human",
+      "field": "Wookie"
+    }
+  ]
+}
