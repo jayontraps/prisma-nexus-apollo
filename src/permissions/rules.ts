@@ -23,7 +23,7 @@ export const rules = {
           },
         })
         .author()
-      return ctx.userId === author.id
+      return author ? ctx.userId === author.id : null
     } catch (e) {
       return e
     }

@@ -6,7 +6,7 @@ import { errors } from '../../utils/errors'
 export const signup = mutationField('signup', {
   type: 'AuthPayload',
   args: {
-    name: stringArg({ nullable: true }),
+    name: stringArg(),
     email: stringArg({ required: true }),
     password: stringArg({ required: true }),
   },
@@ -51,10 +51,13 @@ export const login = mutationField('login', {
     }
 
     if (!user) handleError(errors.invalidUser)
+    let accessToken = ''
+    if (user) {
+      const passwordValid = await compare(password, user.password)
+      if (!passwordValid) handleError(errors.invalidUser)
+      accessToken = generateAccessToken(user.id)
+    }
 
-    const passwordValid = await compare(password, user.password)
-    if (!passwordValid) handleError(errors.invalidUser)
-    const accessToken = generateAccessToken(user.id)
     ctx.res.cookie('token', accessToken, {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365,

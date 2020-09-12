@@ -4,7 +4,7 @@
 
 type AuthPayload {
   accessToken: String!
-  user: User!
+  user: User
 }
 
 scalar DateTime
